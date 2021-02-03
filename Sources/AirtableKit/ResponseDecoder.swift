@@ -41,11 +41,12 @@ final class ResponseDecoder {
         let records = json["records"] as? [[String: Any]] ?? []
         
     /// Added parsing of offset value if present
-        let offset = json["offset"] as? String ?? nil
+        if let offset = json["offset"] as? String {
        
-    /// Added storage of offset value in shared delegate object
-        self.delegate.offset = offset
-        print(offset)
+      /// Added storage of offset value in shared delegate object
+            self.delegate.offset = offset
+            print(offset)
+        }
         return try records.map(_decodeRecord)
     }
     
