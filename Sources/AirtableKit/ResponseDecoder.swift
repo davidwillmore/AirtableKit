@@ -45,7 +45,7 @@ final class ResponseDecoder {
        
             var offset: String?
             
-            if let index = offset.range(of: "/")?.lowerBound {
+            if let index = offsetString.range(of: "/")?.lowerBound {
                 let substring = offsetString[..<index]
                 offset = String(substring)
             } else {
