@@ -20,7 +20,7 @@ public final class Airtable {
     private var baseURL: URL { Self.airtableURL.appendingPathComponent(baseID) }
     
     private let requestEncoder: RequestEncoder = RequestEncoder()
-    private let responseDecoder: ResponseDecoder = ResponseDecoder(delegate: offset)
+    private let responseDecoder: ResponseDecoder { return ResponseDecoder(delegate: offset) } // = ResponseDecoder(delegate: offset)
     private let errorHander: ErrorHandler = ErrorHandler()
     
     /// Initializes the client to work on a base using the specified API key.
