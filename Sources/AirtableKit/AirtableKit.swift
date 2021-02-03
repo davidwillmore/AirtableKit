@@ -13,7 +13,7 @@ public final class Airtable {
     public let apiKey: String
     
     /// Added shared delegate object to store offset values detected during list operations
-    public var offset = OffsetDelegate().shared
+    public var offset = OffsetDelegate.shared
     
     private static let batchLimit: Int = 10
     private static let airtableURL: URL = URL(string: "https://api.airtable.com/v0")!
