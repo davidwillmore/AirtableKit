@@ -45,12 +45,12 @@ final class ResponseDecoder {
                    
             if let index = offsetString.range(of: "/")?.lowerBound {
                 let substring = offsetString[..<index]
-                if let offset = String(substring) {
+                let offset = String(substring) {
                     self.delegate.offset = offset
                     print(offset)
-                }
+                
             } else if offsetString != nil {
-                self.delegate.offset = offsetString!
+                self.delegate.offset = offsetString
                 print(offsetString)
             } else {
                 self.delegate.offset = nil   
