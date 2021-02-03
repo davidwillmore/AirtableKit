@@ -6,6 +6,10 @@ import Foundation
 final class ResponseDecoder {
     var delegate: OffsetDelegate
     
+    public init(delegate: OffsetDelegate) {
+        self.delegate = delegate
+    }
+    
     /// Date formatter used for writing dates to JSON objects
     static let formatter: DateFormatter = {
         let formatter = DateFormatter()
