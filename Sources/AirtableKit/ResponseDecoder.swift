@@ -32,7 +32,7 @@ final class ResponseDecoder {
     /// Decodes a JSON `Data` as a list of `Record`s.
     ///
     /// - Throws: `AirtableError`.
-    func decodeRecords(data: Data) throws -> [Record] {
+    func decodeRecords(data: Data, delegate: OffsetDelegate) throws -> [Record] {
         let json = try asJSON(data: data)
         let records = json["records"] as? [[String: Any]] ?? []
         
@@ -40,7 +40,7 @@ final class ResponseDecoder {
         let offset = json["offset"] as? String ?? nil
        
     /// Added storage of offset value in shared delegate object
-        self.delegate.offset = offset
+        delegate.shared.offset = offset
         return try records.map(_decodeRecord)
     }
     
