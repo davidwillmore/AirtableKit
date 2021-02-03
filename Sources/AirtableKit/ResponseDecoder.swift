@@ -4,7 +4,7 @@ import Foundation
 ///
 /// Converts JSON objects to `Record`s and `Attachment`s.
 final class ResponseDecoder {
-    let delegate = OffsetDelegate.shared
+    var delegate: OffsetDelegate
     
     /// Date formatter used for writing dates to JSON objects
     static let formatter: DateFormatter = {
