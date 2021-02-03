@@ -42,19 +42,22 @@ final class ResponseDecoder {
         
     /// Added parsing of offset value if present
         if let offsetString = json["offset"] as? String {
-       
-            var offset: String?
-            
+                   
             if let index = offsetString.range(of: "/")?.lowerBound {
                 let substring = offsetString[..<index]
-                offset = String(substring)
+                if let offset = String(substring) {
+                    self.delegate.offset = offset
+                    print(offset)
+                }
+            } else if offsetString != nil {
+                self.delegate.offset = offsetString!
+                print(offsetString)
             } else {
-                offset = offsetString
+                self.delegate.offset = nil   
             }
             
       /// Added storage of offset value in shared delegate object
-            self.delegate.offset = offset
-            print(offset)
+            
         }
         return try records.map(_decodeRecord)
     }
