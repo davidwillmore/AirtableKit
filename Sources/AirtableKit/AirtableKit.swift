@@ -12,16 +12,16 @@ public final class Airtable {
     /// API key of the user manipulating the base.
     public let apiKey: String
     
+    /// Added shared delegate object to store offset values detected during list operations
+    private var offset = OffsetDelegate.shared
+    
     private static let batchLimit: Int = 10
     private static let airtableURL: URL = URL(string: "https://api.airtable.com/v0")!
     private var baseURL: URL { Self.airtableURL.appendingPathComponent(baseID) }
     
     private let requestEncoder: RequestEncoder = RequestEncoder()
-    private let responseDecoder: ResponseDecoder = ResponseDecoder()
+    private let responseDecoder: ResponseDecoder = ResponseDecoder(delegate: self.offset)
     private let errorHander: ErrorHandler = ErrorHandler()
-    
-    /// Added shared delegate object to store offset values detected during list operations
-    private var offset = OffsetDelegate.shared
     
     /// Initializes the client to work on a base using the specified API key.
     ///
