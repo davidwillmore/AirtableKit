@@ -45,6 +45,7 @@ final class ResponseDecoder {
        
     /// Added storage of offset value in shared delegate object
         self.delegate.offset = offset
+        print(offset)
         return try records.map(_decodeRecord)
     }
     
