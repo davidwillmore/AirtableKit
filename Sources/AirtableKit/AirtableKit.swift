@@ -219,7 +219,9 @@ extension Airtable {
         
         /// Added parameter for incorporating offset values to method
         if let offset = offset {
-            parameters.append(URLQueryItem(name: "offset", value: offset))
+            let queryItem = URLQueryItem(name: "offset", value: offset)
+            parameters.append(queryItem)
+            print(queryItem.value)
         }
         if !parameters.isEmpty {
             var components = URLComponents(url: baseURL.appendingPathComponent(path), resolvingAgainstBaseURL: false)
